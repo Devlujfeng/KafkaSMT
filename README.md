@@ -1,20 +1,22 @@
 # Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+When sending data tokafka, sensitive value must be tokenized and detokenized. We choose to customized SMT to call API to have the value exchange with tokenization server. This Repository aims to demostrate of using customized SMT java plugin which loaded into kafka connect for kafka connectors to exchange value. 
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+Step: 
+1.	Create new project (e.g. Net Bean Github)
+2.	Add automated build system (e.g. Maven)
+3.	Add Kafka Connect and Connect Transforms dependencies (to have access to Kafka Connect SMT API)
+4.	Develop a simple “String Filter SMT”, e.g. by using another SMT as template, like TimestampRouter SMT for String messages
+5.	Build and generate JAR (without Kafka dependencies)
+6.	Add the JAR to default Connect plugin path https://docs.confluent.io/current/connect/userguide.html
+7.	Start Connect via Confluent CLI
+8.	Add connector including the SMT
+9.	Test it
+10.	Develop Unit Test
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
 
 # Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
-
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+Reference link: 
+Java with maven wouldn't build: Cannot run program “cmd” “Malformed argument has embedded quote”
+I have checked the release notes for JDK 13.0.1 at https://www.oracle.com/technetwork/java/javase/13-0-1-relnotes-5592797.html#JDK-8221858
+This behavior is a regression from a security fix for JDK-8221858 (not public). Follow the link for a full description. The fix is part of JDK 8u231, JDk 11.0.5, 13.0.1 etc.
+To resolve this problem, append -J-Djdk.lang.Process.allowAmbiguousCommands=true to netbeans_default_options in <netbeans-dir>\etc\netbeans.conf.
